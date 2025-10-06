@@ -25,12 +25,14 @@ A tiny Python utility that converts JSON sprite descriptions into PNG images and
 
 Features
 --------
+
 - Render individual sprites defined as a grid and palette in JSON into PNG images.
 - Combine multiple sprites (JSON array) into a horizontal spritesheet with configurable pixel scale and padding.
 - Transparent pixels supported via a "transparent" palette value or missing palette key.
 
 Quick example
 -------------
+
 Place a JSON file like `input/example1.json` then run the script to generate `output/example1.png`.
 json2sprite
 ==========
@@ -39,12 +41,14 @@ Small utility to render sprites from JSON into PNG images and simple horizontal 
 
 What it does
 ------------
+
 - Render a single sprite (grid + palette) to PNG.
 - Combine multiple sprite objects (JSON list) into a horizontal spritesheet.
 - Supports transparent cells via the literal value "transparent" in the palette or by omitting a palette key.
 
 Minimal JSON shape
 ------------------
+
 Single sprite object (example):
 
 {
@@ -56,6 +60,7 @@ Or a top-level list of objects to produce a single spritesheet.
 
 Usage
 -----
+
 - Process a single file:
 
 ```powershell
