@@ -111,4 +111,4 @@ Notes
 License
 -------
 
-AGPL-3.0 License. See [LICENSE](LICENSE) for details.
+AGPL-3.0 License. See [LICENSE](LICENSE.md) for details.
