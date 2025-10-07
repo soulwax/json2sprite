@@ -10,13 +10,14 @@ A robust Python utility that converts JSON sprite descriptions into PNG images a
 
 ## Features
 
-- ✨ Render individual sprites defined as a grid and palette in JSON into PNG images
-- 🖼️ Combine multiple sprites (JSON array) into a horizontal spritesheet with configurable pixel scale and padding
-- 🎨 Transparent pixels supported via "transparent" palette value or missing palette key
-- 🧪 Fully tested with pytest (100% coverage goal)
-- 🔍 Type hints and comprehensive error handling
-- 📦 Installable via pip
-- 🔧 Command-line interface and Python API
+- ✨ **JSON to PNG**: Render individual sprites defined as a grid and palette in JSON into PNG images
+- 🔄 **PNG to JSON**: Reverse conversion - extract sprite data from PNG images back to JSON format
+- 🖼️ **Spritesheets**: Combine multiple sprites into horizontal spritesheets or split them back into individual sprites
+- 🎨 **Transparency**: Full support for transparent pixels
+- 🧪 **Fully tested**: Comprehensive test suite with pytest (100% coverage goal)
+- 🔍 **Type safe**: Complete type hints and error handling
+- 📦 **Easy install**: Available via pip
+- 🔧 **Flexible**: Command-line interface and Python API
 
 ## Installation
 
@@ -196,7 +197,7 @@ twine upload dist/*
 
 ## Project Structure
 
-```
+```bash
 json2sprite/
 ├── .github/
 │   └── workflows/
