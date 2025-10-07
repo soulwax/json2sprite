@@ -4,10 +4,11 @@
 json2sprite - Convert JSON sprite descriptions into PNG images and spritesheets.
 
 This package provides utilities to render pixel art sprites defined in JSON format
-into PNG images. It supports individual sprites and horizontal spritesheets.
+into PNG images. It supports individual sprites, horizontal spritesheets, and
+reverse conversion from PNG back to JSON.
 """
 
-__version__ = "0.1.0"
+__version__ = "0.5.0"
 __author__ = "Soulwax"
 __license__ = "AGPL-3.0-or-later"
 

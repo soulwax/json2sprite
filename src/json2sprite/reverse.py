@@ -87,14 +87,12 @@ def _process_grid_cell(
     Returns:
         Tuple of (character, new_char_index)
     """
-    # Sample the center pixel of each grid cell
-    sample_x = x * pixel_size + pixel_size // 2
-    sample_y = y * pixel_size + pixel_size // 2
+    sample_x = x * pixel_size + (pixel_size >> 1)
+    sample_y = y * pixel_size + (pixel_size >> 1)
     pixel = img.getpixel((sample_x, sample_y))
 
     color = _extract_color_from_pixel(pixel)
 
-    # Handle transparent pixels
     if color[3] == 0:
         return ".", char_index
 
@@ -163,7 +161,6 @@ def _build_palette_from_colors(color_map: Dict[Tuple[int, int, int, int], str]) 
         if color == (0, 0, 0, 0):
             palette[char] = "transparent"
         else:
-            # Convert RGBA to hex
             hex_color = f"#{color[0]:02X}{color[1]:02X}{color[2]:02X}"
             palette[char] = hex_color
     return palette
@@ -197,7 +194,7 @@ def png_to_sprite(
     img = Image.open(image_path).convert("RGBA")
     width, height = img.size
 
-    if width % pixel_size != 0 or height % pixel_size != 0:
+    if (width % pixel_size) | (height % pixel_size):
         raise ValueError(
             f"Image dimensions ({width}x{height}) must be divisible by pixel_size ({pixel_size})"
         )
@@ -205,12 +202,10 @@ def png_to_sprite(
     grid_width = width // pixel_size
     grid_height = height // pixel_size
 
-    # Build grid and extract colors
     grid, color_map = _build_grid_from_image(
         img, grid_width, grid_height, pixel_size, palette_chars
     )
 
-    # Build palette from colors
     palette = _build_palette_from_colors(color_map)
 
     return {
@@ -242,11 +237,7 @@ def png_to_json_file(
     image_path = Path(image_path)
     output_path = Path(output_path)
 
-    print(f"Converting {image_path} -> {output_path}", flush=True)
-
     sprite = png_to_sprite(image_path, pixel_size=pixel_size)
-
-    # Wrap in list for compatibility with json2sprite format
     data = [sprite]
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -255,8 +246,9 @@ def png_to_json_file(
         if pretty:
             json.dump(data, f, indent=2, ensure_ascii=False)
         else:
-            json.dump(data, f, ensure_ascii=False)
+            json.dump(data, f, ensure_ascii=False, separators=(",", ":"))
 
+    print(f"Converting {image_path} -> {output_path}", flush=True)
     print(f"Saved {output_path}", flush=True)
 
 
@@ -264,6 +256,7 @@ def png_folder_to_json(
     input_folder: Union[str, Path],
     output_folder: Union[str, Path],
     pixel_size: int = 16,
+    pretty: bool = True,
 ) -> None:
     """
     Convert all PNG files in a folder to JSON, maintaining directory structure.
@@ -272,9 +265,11 @@ def png_folder_to_json(
         input_folder: Path to input folder with PNG files
         output_folder: Path to output folder for JSON files
         pixel_size: Size of each pixel in the original sprites (default: 16)
+        pretty: Use pretty-printed JSON (default: True)
 
     Raises:
         FileNotFoundError: If input folder doesn't exist
+        ValueError: If input is not a directory
     """
     input_folder = Path(input_folder)
     output_folder = Path(output_folder)
@@ -296,7 +291,7 @@ def png_folder_to_json(
                 output_path = output_folder / relative_path
 
                 try:
-                    png_to_json_file(png_path, output_path, pixel_size=pixel_size)
+                    png_to_json_file(png_path, output_path, pixel_size=pixel_size, pretty=pretty)
                 except (FileNotFoundError, ValueError, OSError, PermissionError) as exc:
                     print(f"Error processing {png_path}: {exc}", flush=True)
 
@@ -390,19 +385,15 @@ def split_spritesheet(
     output_folder.mkdir(parents=True, exist_ok=True)
 
     while x_offset + sprite_width <= sheet_width:
-        # Extract sprite from sheet
         sprite_img = _extract_sprite_from_sheet(sheet, x_offset, sprite_width, sprite_height)
 
-        # Save temporarily to convert
         temp_path = output_folder / f"sprite_{sprite_index:03d}.png"
         sprite_img.save(temp_path)
 
-        # Convert to JSON format
         sprite_data = png_to_sprite(temp_path, pixel_size=pixel_size)
         sprite_data["sprite_name"] = f"{sheet_path.stem}_sprite_{sprite_index}"
         sprites.append(sprite_data)
 
-        # Save individual JSON
         _save_sprite_json(sprite_data, output_folder, sprite_index)
 
         x_offset += sprite_width + padding

@@ -10,13 +10,20 @@ from typing import Union
 from json2sprite.core import make_spritesheet
 
 
-def process_json_file(json_path: Union[str, Path], output_path: Union[str, Path]) -> None:
+def process_json_file(
+    json_path: Union[str, Path],
+    output_path: Union[str, Path],
+    pixel_size: int = 16,
+    padding: int = 4,
+) -> None:
     """
     Process a single JSON file and save the resulting sprite/spritesheet.
 
     Args:
         json_path: Path to input JSON file
         output_path: Path for output PNG file
+        pixel_size: Size of each pixel in output (default: 16)
+        padding: Pixels between sprites in sheet (default: 4)
 
     Raises:
         FileNotFoundError: If input file doesn't exist
@@ -37,7 +44,7 @@ def process_json_file(json_path: Union[str, Path], output_path: Union[str, Path]
     if not isinstance(data, list):
         raise ValueError("JSON root must be a list of sprite objects")
 
-    sheet = make_spritesheet(data)
+    sheet = make_spritesheet(data, pixel_size=pixel_size, padding=padding)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     sheet.save(output_path)
@@ -45,13 +52,20 @@ def process_json_file(json_path: Union[str, Path], output_path: Union[str, Path]
     print(f"Saved {output_path}", flush=True)
 
 
-def process_folder(input_folder: Union[str, Path], output_folder: Union[str, Path]) -> None:
+def process_folder(
+    input_folder: Union[str, Path],
+    output_folder: Union[str, Path],
+    pixel_size: int = 16,
+    padding: int = 4,
+) -> None:
     """
     Process all JSON files in a folder, maintaining directory structure.
 
     Args:
         input_folder: Path to input folder
         output_folder: Path to output folder
+        pixel_size: Size of each pixel in output (default: 16)
+        padding: Pixels between sprites in sheet (default: 4)
 
     Raises:
         FileNotFoundError: If input folder doesn't exist
@@ -76,7 +90,7 @@ def process_folder(input_folder: Union[str, Path], output_folder: Union[str, Pat
                 output_path = output_folder / relative_path
 
                 try:
-                    process_json_file(json_path, output_path)
+                    process_json_file(json_path, output_path, pixel_size, padding)
                 except (FileNotFoundError, json.JSONDecodeError, ValueError) as exc:
                     print(f"Error processing {json_path}: {exc}", flush=True)
 

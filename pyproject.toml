@@ -6,15 +6,13 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "json2sprite"
-version = "0.1.0"
-description = "A tool to convert JSON sprite descriptions into PNG images and spritesheets"
+version = "0.5.0"
+description = "Bidirectional conversion between JSON sprite descriptions and PNG images"
 readme = "README.md"
-authors = [
-    {name = "Soulwax", email = "your.email@example.com"}
-]
-license = {text = "AGPL-3.0-or-later"}
+authors = [{ name = "Soulwax", email = "your.email@example.com" }]
+license = { text = "AGPL-3.0-or-later" }
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: GNU Affero General Public License v3 or later (AGPLv3+)",
     "Programming Language :: Python :: 3",
@@ -25,12 +23,19 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Topic :: Multimedia :: Graphics",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    "Operating System :: OS Independent",
 ]
-keywords = ["sprite", "pixel-art", "graphics", "spritesheet", "game-development"]
+keywords = [
+    "sprite",
+    "pixel-art",
+    "graphics",
+    "spritesheet",
+    "game-development",
+    "png",
+    "json",
+]
 requires-python = ">=3.8"
-dependencies = [
-    "pillow>=10.0.0",
-]
+dependencies = ["pillow>=10.0.0"]
 
 [project.optional-dependencies]
 dev = [
@@ -48,12 +53,14 @@ dev = [
 Homepage = "https://github.com/soulwax/json2sprite"
 Repository = "https://github.com/soulwax/json2sprite"
 "Bug Tracker" = "https://github.com/soulwax/json2sprite/issues"
+Documentation = "https://github.com/soulwax/json2sprite#readme"
+Changelog = "https://github.com/soulwax/json2sprite/blob/main/CHANGELOG.md"
 
 [project.scripts]
 json2sprite = "json2sprite.cli:main"
 
 [tool.setuptools]
-package-dir = {"" = "src"}
+package-dir = { "" = "src" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -61,8 +68,6 @@ include = ["json2sprite*"]
 namespaces = false
 
 [tool.black]
-line-length = 100
-target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
 include = '\.pyi?$'
 exclude = '''
 /(
@@ -75,18 +80,19 @@ exclude = '''
 )/
 '''
 
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
 [tool.pylint.messages_control]
 max-line-length = 100
 disable = [
-    "C0103",  # Invalid name
-    "R0913",  # Too many arguments
-    "R0801",  # Similar lines (acceptable for similar file processing logic)
+    "C0103", # Invalid name
+    "R0913", # Too many arguments
+    "R0801", # Similar lines
+    "R0912", # Too many branches
 ]
 
 [tool.pylint.main]
-ignore-paths = [
-    "^tests/.*$",
-]
+ignore-paths = ["^tests/.*$"]
 
 [tool.pytest.ini_options]
 minversion = "7.0"
