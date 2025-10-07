@@ -1,3 +1,5 @@
+# File: setup_dev.ps1
+
 # Development setup script for Windows PowerShell
 
 $ErrorActionPreference = "Stop"

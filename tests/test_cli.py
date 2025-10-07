@@ -1,3 +1,5 @@
+# File: tests/test_cli.py
+
 """Tests for CLI functionality."""
 
 import json

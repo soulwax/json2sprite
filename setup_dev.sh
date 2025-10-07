@@ -1,4 +1,6 @@
 #!/bin/bash
+# File: setup_dev.sh
+
 # Development setup script for Unix-like systems
 
 set -e

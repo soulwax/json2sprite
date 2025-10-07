@@ -1,3 +1,5 @@
+# File: tests/test_init.py
+
 """Tests for package initialization."""
 
 import json2sprite

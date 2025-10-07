@@ -1,3 +1,5 @@
+# File: src/json2sprite/__init__.py
+
 """
 json2sprite - Convert JSON sprite descriptions into PNG images and spritesheets.
 

@@ -1,3 +1,5 @@
+# File: tests/test_processor.py
+
 """Tests for file processing functionality."""
 
 import json

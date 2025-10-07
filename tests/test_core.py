@@ -1,3 +1,5 @@
+# File: tests/test_core.py
+
 """Tests for core sprite rendering functionality."""
 
 import pytest

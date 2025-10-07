@@ -1,3 +1,5 @@
+# File: src/json2sprite/processor.py
+
 """File processing utilities for JSON to sprite conversion."""
 
 import json

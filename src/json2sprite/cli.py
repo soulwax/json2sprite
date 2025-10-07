@@ -1,3 +1,5 @@
+# File: src/json2sprite/cli.py
+
 """Command-line interface for json2sprite."""
 
 import sys

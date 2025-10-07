@@ -1,3 +1,5 @@
+# File: src/json2sprite/core.py
+
 """Core sprite rendering functionality."""
 
 from typing import Dict, List, Tuple
