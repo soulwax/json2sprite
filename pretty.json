@@ -1,0 +1,12 @@
+[
+  {
+    "sprite_name": "test",
+    "grid": [
+      "A"
+    ],
+    "palette": {
+      ".": "transparent",
+      "A": "#FF0000"
+    }
+  }
+]
