@@ -8,6 +8,8 @@
 
 A robust Python utility that converts JSON sprite descriptions into PNG images and horizontal spritesheets.
 
+[![JSON2PNG-PNG2JSON](.github/assets/json2png.png)]
+
 ## Features
 
 - ✨ **JSON to PNG**: Render individual sprites defined as a grid and palette in JSON into PNG images
