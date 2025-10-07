@@ -13,10 +13,20 @@ __license__ = "AGPL-3.0-or-later"
 
 from json2sprite.core import make_spritesheet, render_sprite
 from json2sprite.processor import process_folder, process_json_file
+from json2sprite.reverse import (
+    png_folder_to_json,
+    png_to_json_file,
+    png_to_sprite,
+    split_spritesheet,
+)
 
 __all__ = [
     "render_sprite",
     "make_spritesheet",
     "process_json_file",
     "process_folder",
+    "png_to_sprite",
+    "png_to_json_file",
+    "png_folder_to_json",
+    "split_spritesheet",
 ]

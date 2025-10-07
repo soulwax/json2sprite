@@ -1,5 +1,7 @@
 include README.md
 include LICENSE.md
+include EXAMPLES.md
+include CHANGELOG.md
 include requirements.txt
 recursive-include tests *.py
 recursive-include input *.json

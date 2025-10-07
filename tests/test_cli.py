@@ -9,6 +9,7 @@ from pathlib import Path
 import pytest
 
 from json2sprite.cli import main
+from json2sprite.core import render_sprite
 
 
 @pytest.fixture

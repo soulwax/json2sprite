@@ -80,6 +80,7 @@ max-line-length = 100
 disable = [
     "C0103",  # Invalid name
     "R0913",  # Too many arguments
+    "R0801",  # Similar lines (acceptable for similar file processing logic)
 ]
 
 [tool.pylint.main]

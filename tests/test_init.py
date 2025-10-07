@@ -30,6 +30,10 @@ class TestPackageInit:
             "make_spritesheet",
             "process_json_file",
             "process_folder",
+            "png_to_sprite",
+            "png_to_json_file",
+            "png_folder_to_json",
+            "split_spritesheet",
         ]
 
         assert hasattr(json2sprite, "__all__")
