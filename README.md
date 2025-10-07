@@ -5,21 +5,30 @@
 [![PyPI version](https://badge.fury.io/py/json2sprite.svg)](https://badge.fury.io/py/json2sprite)
 [![Python versions](https://img.shields.io/pypi/pyversions/json2sprite.svg)](https://pypi.org/project/json2sprite/)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+[![Made with Python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
+[![Black formatted](https://img.shields.io/badge/Code%20style-Black-000000.svg)](https://black.readthedocs.io/en/stable/)
+[![AI](https://img.shields.io/badge/0%25-AI-lightgrey.svg)](https://noaimovement.com/)
 
-A robust Python utility that converts JSON sprite descriptions into PNG images and horizontal spritesheets.
+A soon to be very robust Python utility that converts JSON sprite descriptions into PNG images and horizontal spritesheets. I don't know yet of any other tool that does this especially not if this goes web based, but I also cannot yet think of a real use case for this for myself personally except for liking the idea.
 
-[![JSON2PNG-PNG2JSON](.github/assets/json2png.png)]
+ANY kind of feedback as well as contributions are welcome with zero expectations on my side as well as zero bureaucracy or code of conducts or any of this bs for such a small project. Just bee urself lmao.
+
+## __STRICT NO AI RULE__ for the code! Only exceptions I can think of are the most tedious of tasks like formatting and linting, markdown summaries and the like, that goes without saying.
+
+![JSON2PNG-PNG2JSON](.github/assets/json2beach.png)
+
+<!-- ![JSON2KNIGHT-PNG2JSON](.github/assets/json2knight.png) -->
 
 ## Features
 
-- ✨ **JSON to PNG**: Render individual sprites defined as a grid and palette in JSON into PNG images
-- 🔄 **PNG to JSON**: Reverse conversion - extract sprite data from PNG images back to JSON format
-- 🖼️ **Spritesheets**: Combine multiple sprites into horizontal spritesheets or split them back into individual sprites
-- 🎨 **Transparency**: Full support for transparent pixels
-- 🧪 **Fully tested**: Comprehensive test suite with pytest (100% coverage goal)
-- 🔍 **Type safe**: Complete type hints and error handling
-- 📦 **Easy install**: Available via pip
-- 🔧 **Flexible**: Command-line interface and Python API
+- ✨ __JSON to PNG__: Render individual sprites defined as a grid and palette in JSON into PNG images
+- 🔄 __PNG to JSON__: Reverse conversion - extract sprite data from PNG images back to JSON format
+- 🖼️ __Spritesheets__: Combine multiple sprites into horizontal spritesheets or split them back into individual sprites
+- 🎨 __Transparency__: Full support for transparent pixels
+- 🧪 __Fully tested__: Comprehensive test suite with pytest (100% coverage goal)
+- 🔍 __Type safe__: Complete type hints and error handling
+- 📦 __Easy install__: Available via pip
+- 🔧 __Flexible__: Command-line interface and Python API
 
 ## Installation
 
