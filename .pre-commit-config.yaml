@@ -1,5 +1,4 @@
 # File: .pre-commit-config.yaml
-
 # Pre-commit hooks configuration
 # Install: pip install pre-commit
 # Setup: pre-commit install

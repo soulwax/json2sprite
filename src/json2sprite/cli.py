@@ -2,6 +2,7 @@
 
 """Command-line interface for json2sprite."""
 
+import json
 import sys
 from pathlib import Path
 
@@ -33,7 +34,7 @@ def main() -> None:
     except FileNotFoundError as exc:
         print(f"Error: {exc}")
         sys.exit(1)
-    except Exception as exc:
+    except json.JSONDecodeError as exc:
         print(f"Error: {exc}")
         sys.exit(1)
 

@@ -2,7 +2,7 @@
 
 """Core sprite rendering functionality."""
 
-from typing import Dict, List, Tuple
+from typing import Dict, List
 
 from PIL import Image
 
@@ -52,11 +52,12 @@ def render_sprite(sprite: Dict, pixel_size: int = 16) -> Image.Image:
 
             try:
                 rgb = tuple(int(color[i : i + 2], 16) for i in (1, 3, 5))
-                img.putpixel((x, y), rgb + (255,))
+                rgba = (rgb[0], rgb[1], rgb[2], 255)
+                img.putpixel((x, y), rgba)
             except (ValueError, IndexError) as exc:
                 raise ValueError(f"Invalid hex color: {color}") from exc
 
-    return img.resize((width * pixel_size, height * pixel_size), Image.NEAREST)
+    return img.resize((width * pixel_size, height * pixel_size), Image.Resampling.NEAREST)
 
 
 def make_spritesheet(sprites: List[Dict], pixel_size: int = 16, padding: int = 4) -> Image.Image:

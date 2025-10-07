@@ -77,7 +77,7 @@ def process_folder(input_folder: Union[str, Path], output_folder: Union[str, Pat
 
                 try:
                     process_json_file(json_path, output_path)
-                except Exception as exc:
+                except (FileNotFoundError, json.JSONDecodeError, ValueError) as exc:
                     print(f"Error processing {json_path}: {exc}", flush=True)
 
     if not json_files_found:

@@ -1,8 +1,6 @@
 #!/bin/bash
 # File: setup_dev.sh
 
-# Development setup script for Unix-like systems
-
 set -e
 
 echo "Setting up json2sprite development environment..."

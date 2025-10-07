@@ -39,6 +39,7 @@ dev = [
     "black>=23.7.0",
     "pylint>=2.17.0",
     "mypy>=1.4.0",
+    "types-Pillow>=10.0.0",
     "build>=0.10.0",
     "twine>=4.0.0",
 ]
@@ -51,8 +52,13 @@ Repository = "https://github.com/soulwax/json2sprite"
 [project.scripts]
 json2sprite = "json2sprite.cli:main"
 
+[tool.setuptools]
+package-dir = {"" = "src"}
+
 [tool.setuptools.packages.find]
 where = ["src"]
+include = ["json2sprite*"]
+namespaces = false
 
 [tool.black]
 line-length = 100
@@ -76,6 +82,11 @@ disable = [
     "R0913",  # Too many arguments
 ]
 
+[tool.pylint.main]
+ignore-paths = [
+    "^tests/.*$",
+]
+
 [tool.pytest.ini_options]
 minversion = "7.0"
 addopts = "-ra -q --cov=json2sprite --cov-report=term-missing --cov-report=html"
@@ -90,9 +101,10 @@ warn_return_any = true
 warn_unused_configs = true
 disallow_untyped_defs = false
 ignore_missing_imports = true
+mypy_path = "src"
 
 [tool.coverage.run]
-source = ["src/json2sprite"]
+source = ["src"]
 omit = ["*/tests/*", "*/test_*.py"]
 
 [tool.coverage.report]
